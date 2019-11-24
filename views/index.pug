@@ -3,8 +3,20 @@ extends layout
 block content
   div.container
     h1 Outlookで、会議室の地図URLを貼り付けるマクロ
-    p hoge
     h2 実現イメージ
+    img.img-fluid(src='../images/kocchi2.gif')
+    h2 ユーザに協力してもらう必要があること
+    ul
+      li マクロをリボンに登録してもらう
+      li 表示名を変更してもらう(オプション)
+      li アイコンを変更してもらう(オプション)
+    h2 マクロだけで実現できること
+    ul
+      li 宛先から会議室名を抽出する
+      li 抽出した会議室名を遷移パラメータにセットする
+      li 現在のカーソル位置に地図URLを貼り付ける
+
+    
     h2 マクロ
     h2 詳細
     h3 1.あああ

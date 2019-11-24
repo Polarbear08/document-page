@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+h1 {
+  padding: 1em 0;
+}
+
+h2 {
+  border-left: solid 0.3em #02233e;
+  border-bottom: dotted 0.1em #02233e;
+  padding: 0.5em;
+}
