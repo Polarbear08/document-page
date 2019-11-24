@@ -1,0 +1,8 @@
+# modules
+node_modules
+
+# log files
+*.log
+
+# compiled output
+dist/
