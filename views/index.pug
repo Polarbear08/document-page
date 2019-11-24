@@ -7,24 +7,27 @@ block content
     h2 実現イメージ
     img.img-fluid(src='../images/kocchi2.gif')
     p
-    
+
     h2 ユーザが設定する必要があること
     ul
       li マクロをダウンロードしてもらう(必須)
       li マクロをリボンに登録してもらう(必須)
       li 表示名を変更してもらう(オプション)
       li アイコンを変更してもらう(オプション)
+    br
     
     h2 マクロだけで実現できること
     ul
       li 宛先から会議室名を抽出する
       li 抽出した会議室名を遷移パラメータにセットする
       li 現在のカーソル位置に地図URLを貼り付ける
+    br
 
     h2 不明なこと
     ul
       li 自分の環境ではオレオレ証明書(SelfCert.exeによる証明書)でマクロを使えるが、人に配布するとき証明書どうする？
       li マクロをダウンロードして保存してもらうことになるが、どこに保存させればよいか不明
+    br
 
     h2 マクロ
     pre.prettyprint.bg-light
@@ -84,6 +87,7 @@ block content
         |       getMeetingRoomName = Match
         |   Next Match
         | End Function
+    br
 
     h2 参考サイト
     ul
@@ -101,4 +105,5 @@ block content
         a(href='http://excelvba.pc-users.net/fol6/6_6.html') Functionの途中で抜け出す
       li
         a(href='http://officetanaka.net/excel/vba/function/VarType.htm') VBAの変数の型を調べる方法
+      br
 
