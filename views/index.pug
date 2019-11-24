@@ -3,21 +3,85 @@ extends layout
 block content
   div.container
     h1 Outlookで、会議室の地図URLを貼り付けるマクロ
+    
     h2 実現イメージ
     img.img-fluid(src='../images/kocchi2.gif')
-    h2 ユーザに協力してもらう必要があること
+    p
+    
+    h2 ユーザが設定する必要があること
     ul
       li マクロをリボンに登録してもらう
       li 表示名を変更してもらう(オプション)
       li アイコンを変更してもらう(オプション)
+    
     h2 マクロだけで実現できること
     ul
       li 宛先から会議室名を抽出する
       li 抽出した会議室名を遷移パラメータにセットする
       li 現在のカーソル位置に地図URLを貼り付ける
 
-    
     h2 マクロ
+    pre.prettyprint.bg-light
+      code.language-java Sub Kocchi()
+        |
+        |   ' 現在表示しているメールオブジェクトを取得する
+        |   Dim objlns As Inspector
+        |   Dim objItem As Object
+        |   Set objlns = Application.ActiveInspector
+        |   Set objItem = objlns.CurrentItem
+        |   
+        |   ' 宛先情報から会議室名を取得する
+        |   Dim objMeetingRoomName As String
+        |   objMeetingRoomName = getMeetingRoomName(objItem)
+        |   
+        |   ' 会議室の地図URLを作成する
+        |   Dim mapUrl As String
+        |   mapUrl = "http://hogehoge?param=" & objMeetingRoomName
+        |   
+        |   ' 会議室の地図URLをカーソル位置に挿入する
+        |   Dim objDoc As Object
+        |   Set objDoc = objItem.GetInspector().WordEditor
+        |   objDoc.Application.Selection.TypeText mapUrl
+        | End Sub
+        |   
+        | Function getMeetingRoomName(ByVal objItem As Object) As String
+        |   ' 正規表現で会議室名を抽出する
+        |   Dim reg As Object
+        |   Set reg = CreateObject("VBScript.RegExp")
+        |   With reg
+        |       .Pattern = "[NS][0-9]{4}[A-Z]"
+        |       .IgnoreCase = False
+        |       .Global = True
+        |   End With
+        |   
+        |   Dim destStr As String
+        |   Dim matches As Object
+        |   destStr = objItem.To
+        |   Set matches = reg.Execute(destStr)
+        |   
+        |   ' 単一の会議室が抽出された場合のみ、会議室名を返却する
+        |   ' 0または2件以上抽出された場合は、
+        |   ' エラーメッセージを表示して空文字列を返却する
+        |   If matches.Count = 0 Then
+        |       MsgBox "宛先に会議室がありません"
+        |       getMeetingRoomName = ""
+        |       Exit Function
+        |   End If
+        |   
+        |   If matches.Count >= 2 Then
+        |       MsgBox "宛先に複数の会議室が入力されています"
+        |       getMeetingRoomName = ""
+        |       Exit Function
+        |   End If
+        |   
+        |   For Each Match In matches
+        |       getMeetingRoomName = Match
+        |   Next Match
+        | End Function
+
+    
+
+    
     h2 詳細
     h3 1.あああ
     h3 2.
