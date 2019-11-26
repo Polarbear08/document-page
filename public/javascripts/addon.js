@@ -1,6 +1,5 @@
 /*download button action*/
 function downloadZip() {
-    alert('a')
     const filename = 'downloaded_file.zip'
     const pathname = 'original_file.zip'
     const anchor = document.createElement('a')
