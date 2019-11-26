@@ -1,5 +1,6 @@
 /*download button action*/
 function downloadZip() {
+    alert('a')
     const filename = 'apache_node_doc.zip'
     const pathname = 'apache_node_doc.zip'
     const anchor = document.createElement('a')
