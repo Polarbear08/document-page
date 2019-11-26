@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
 
 module.exports = router;
 
-/* download button action*/
+/* download button action
 function downloadZip() {
   const filename = 'apache_node_doc.zip'
   const pathname = '../static/apache_node_doc.zip'
@@ -17,5 +17,6 @@ function downloadZip() {
   anchor.download = filename
 }
 
-downloadBtn = document.getElementById('dl-button')
+const downloadBtn = document.getElementById('dl-button')
 downloadBtn.addEventListener('click', downloadZip, false)
+*/
