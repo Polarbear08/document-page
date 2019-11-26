@@ -89,6 +89,27 @@ block content
         | End Function
     br
 
+    h2 ファイルダウンロードボタン
+    button#dl-button.btn.btn-primary(type='button') Download Zip File
+    p
+
+    h2 JSコード
+    pre.prettyprint.bg-light
+      code.language-java
+        | /*download button action*/
+        | function downloadZip() {
+        |     const filename = 'downloaded_file.zip'
+        |     const pathname = 'original_file.zip'
+        |     const anchor = document.createElement('a')
+        |     anchor.href = pathname
+        |     anchor.download = filename
+        |     anchor.click()
+        | }
+        | 
+        | const downloadBtn = document.getElementById('dl-button')
+        | downloadBtn.addEventListener('click', downloadZip, false)
+    br
+
     h2 参考サイト
     ul
       li
