@@ -5,6 +5,7 @@ function downloadZip() {
     const anchor = document.createElement('a')
     anchor.href = pathname
     anchor.download = filename
+    anchor.click()
 }
 
 const downloadBtn = document.getElementById('dl-button')
